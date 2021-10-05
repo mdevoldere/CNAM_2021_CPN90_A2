@@ -1,5 +1,8 @@
 DROP DATABASE IF EXISTS usal3K_2021_banks;
-CREATE DATABASE usal3K_2021_banks DEFAULT CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci';
+
+CREATE DATABASE usal3K_2021_banks 
+DEFAULT CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci';
+
 USE usal3K_2021_banks;
 
 -- CREATE user `usal3K_2021_banks`@`localhost` IDENTIFIED BY 'azer';
@@ -24,7 +27,7 @@ CREATE TABLE bank_accounts
    `name` VARCHAR(20),
    `balance` INT NOT NULL DEFAULT '10000',
    `bank_id` INT NOT NULL DEFAULT '1',
-   FOREIGN KEY (bank_id) REFERENCES banks(bank_id) 
+   FOREIGN KEY (bank_id) REFERENCES banks(bank_id)
 ) Engine=InnoDb;
 
 CREATE TABLE transaction_history 
