@@ -1,4 +1,4 @@
-# Symfony API basique avec API-PLatform
+# Symfony API basique avec API-Platform
 
 
 ## Créer un projet Symfony
@@ -74,7 +74,7 @@ FLUSH PRIVILEGES;
 Dans le fichier .env, décommentez la chaine de connexion adaptée à votre serveur de base de données.
 
 
-> DATABASE_URL="mysql://root:root@127.0.0.1:3306/symfony_api?serverVersion=5.7"
+> DATABASE_URL="mysql://utilisateur:azerty@localhost:3306/my_database?serverVersion=5.7"
 
 
 ## Créer la base de données (si vous ne l'avez pas créée à l'étape précédente)
