@@ -2,15 +2,13 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\BankRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource(
- *  collectionOperations= {"get", "post"},
- *  itemOperations={"get", "put", "patch", "delete"},
  *  normalizationContext={"groups"={"bank:read"}},
  *  denormalizationContext={"groups"={"bank:write"}}
  * )
@@ -22,19 +20,22 @@ class Bank
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups("bank:read")
+     * 
+     * @Groups({"bank:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * 
      * @Groups({"bank:read", "bank:write"})
      */
     private $bank_name;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"bank:read", "bank:write"})
+     * 
+     * @Groups({"bank:read"})
      */
     private $bank_balance;
 
