@@ -5,11 +5,41 @@
         <title>Banks</title>
         <script src="https://unpkg.com/vue@next" defer></script>
         <script src="banks.js" defer></script>
+        <style>
+            section {
+                display:flex;
+                flex-flow: row wrap; 
+                /*flex-direction: row;
+                flex-wrap: wrap;*/
+                gap: 5px;
+            }
+
+            article {
+                border: 1px solid #F00;
+            }
+        </style>
     </head>
     <body>
         
         <main id="app">
             <h1>{{ title }}</h1>
+
+            <h2>Add a new bank</h2>
+            <form action="" method="POST">
+                Name: <input type="text" name="bankname" pattern="[a-zA-Z]{4,20}"> 
+                <br>
+                Balance: <input type="number" name="bankbalance" pattern="[0-9]+">
+                <button type="submit">Add</button>
+            </form>
+
+
+            <h2>Bank List</h2>
+            <section>
+                <article v-for="bank in banks"> 
+                    <p>Name: {{ bank.bank_name.toUpperCase() }}</p>
+                    <p>Balance: {{ bank.bank_balance }}</p>
+                </article>
+            </section>
         </main>
     </body>
 </html>

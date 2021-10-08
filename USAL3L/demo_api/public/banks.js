@@ -1,29 +1,29 @@
-fetch('/api/banks', { 
-    method: 'GET', 
-    headers: { 
-        Accept: "application/json"
-    }
-})
-.then(response => {
-    return response.json();
-})
-.then(json => {
-    console.log(json);
-})
-.catch();
-
 const app = {
     data() {
         return {
-            title: "The banks"
+            title: "The banks",
+            banks: []
         }
     },
 
     mounted() {
-        setInterval(() => {
-            this.title += 'a';
-        }, 10);
+        fetch('/api/banks', { 
+            method: 'GET', 
+            headers: { 
+                Accept: "application/json"
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(json => {
+            console.log(json);
+            this.banks = json;
+        })
+        .catch();
     }
 }
 
 Vue.createApp(app).mount('#app');
+
+

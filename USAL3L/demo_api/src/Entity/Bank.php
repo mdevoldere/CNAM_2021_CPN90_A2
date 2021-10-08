@@ -9,8 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource(
- *  normalizationContext={"groups"={"bank:read"}},
- *  denormalizationContext={"groups"={"bank:write"}}
+ *  normalizationContext={"groups"={"banks:read"}},
+ *  denormalizationContext={"groups"={"banks:write"}}
  * )
  * @ORM\Entity(repositoryClass=BankRepository::class)
  */
@@ -21,21 +21,21 @@ class Bank
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * 
-     * @Groups({"bank:read"})
+     * @Groups({"banks:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=20)
      * 
-     * @Groups({"bank:read", "bank:write"})
+     * @Groups({"banks:read", "banks:write"})
      */
     private $bank_name;
 
     /**
      * @ORM\Column(type="integer")
      * 
-     * @Groups({"bank:read"})
+     * @Groups({"banks:read", "banks:write"})
      */
     private $bank_balance;
 
