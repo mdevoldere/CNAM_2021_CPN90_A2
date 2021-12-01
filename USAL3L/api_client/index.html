@@ -2,18 +2,24 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"
         <title>Banks</title>
         <link rel="stylesheet" href="assets/style.css">
+        <script src="https://unpkg.com/vue@next" defer></script>
         <script src="assets/api.js" type="module"></script>
     </head>
-    <body>
+    <body id="patate">
         <header class="header">
-            <h1>Banks</h1>
+            <h1>{{ title }}</h1>
             <nav></nav>
         </header>
         <main>
             <h2>Bank List</h2>
-            
+            <section class="banklist" id="banklist">
+                <article v-for="item in banks">
+                    <h2>{{ item.bankName }}</h2>
+                </article>
+            </section>
         </main>
         <footer class="footer">
             &copy; Le CNAM
