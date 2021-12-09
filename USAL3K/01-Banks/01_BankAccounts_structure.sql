@@ -51,7 +51,7 @@ VALUES
 (1, 'Master Bank'),
 (2, 'Banque Populaire'),
 (3, 'Crédit Mutuel'),
-(4, 'Caisse d\'épargne'),
+(4, "Caisse d'épargne"),
 (5, 'Crédit Agricole');
 
 
