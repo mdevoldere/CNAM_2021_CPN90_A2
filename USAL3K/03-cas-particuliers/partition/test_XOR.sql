@@ -1,0 +1,23 @@
+
+DROP PROCEDURE IF EXISTS test_XOR;
+
+DELIMITER $$
+
+CREATE PROCEDURE test_XOR()
+BEGIN
+	DECLARE a1 INT DEFAULT 0;
+	DECLARE a2 INT DEFAULT 1;
+    
+   
+    IF (a1 > 0 XOR a2 > 0)
+    THEN
+		SELECT 'OK';
+    ELSE
+		SELECT 'KO';
+    END IF;
+END$$
+
+DELIMITER ;
+
+
+CALL test_XOR();
