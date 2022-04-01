@@ -1,0 +1,18 @@
+CREATE USER 'mike'@'127.0.0.1' IDENTIFIED BY 'azer';
+
+GRANT ALL PRIVILEGES 
+ON my_accounts TO 'mike'@'localhost';
+
+GRANT SELECT,CREATE,UPDATE,DELETE,ALTER,INSERT
+ON my_accounts.* TO 'mike'@'localhost';
+
+flush privileges;
+
+
+INSERT INTO bank VALUES (1, 'BNP', 3000000);
+
+
+select * from bank;
+
+
+https://blog.nicolashachet.com/developpement-php/larchitecture-rest-expliquee-en-5-regles/

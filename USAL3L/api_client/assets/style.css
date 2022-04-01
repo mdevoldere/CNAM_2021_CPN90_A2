@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+.header {
+    color: #FFF;
+    background-color: #000099;
+    background-color: rgb(0, 0, 153);
+}
+
+body {
+
+}
+
+main {
+    color: black;
+    background-color: whitesmoke;
+}
+
+.footer {
+    color: black;
+    background-color: #66CCFF;
+}
+
+
+.banklist {
+    display:flex;
+    /*flex-direction: row;
+    flex-wrap: wrap;*/
+    flex-flow: row wrap;
+    gap: 1%;
+
+}
+
+.banklist > article {
+    padding: 20px;
+    flex-basis: 32%;
+    background-color: orange;
+}
