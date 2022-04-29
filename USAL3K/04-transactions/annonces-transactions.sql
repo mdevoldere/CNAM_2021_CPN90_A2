@@ -16,10 +16,13 @@ BEGIN
 	DECLARE buyer INT;
     DECLARE price INT;
     DECLARE user_amount INT;
+    SET AUTOCOMMIT = 0;
     
     START TRANSACTION;
     
-    IF (SELECT product_buyer FROM products WHERE product_id=id_product) IS NOT NULL
+    SELECT product_buyer, product_price INTO buyer, price FROM products WHERE product_id=id_product;
+    
+    IF buyer IS NOT NULL 
     THEN
 		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Le produit a déjà été vendu !'; 
     END IF;
@@ -27,15 +30,16 @@ BEGIN
     SELECT amount INTO user_amount from users WHERE id=id_user; 
     
     UPDATE products SET product_buyer=id_user WHERE product_id=id_product;
-	UPDATE users SET amount=amount-(SELECT product_price FROM products WHERE product_id=id_product) WHERE id=id_user;
+	UPDATE users SET amount=amount-price WHERE id=id_user;
 
-	IF user_amount < (SELECT product_price FROM products WHERE product_id=id_product) 
+	IF (user_amount < price)
     THEN
 		ROLLBACK;
 	ELSE
 		COMMIT; 
     END IF;
     
+    SET AUTOCOMMIT = 1;
 END $$
 
 DELIMITER ;
