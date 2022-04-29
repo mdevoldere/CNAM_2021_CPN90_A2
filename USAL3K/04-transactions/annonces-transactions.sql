@@ -20,14 +20,15 @@ BEGIN
     
     START TRANSACTION;
     
-    SELECT product_buyer, product_price INTO buyer, price FROM products WHERE product_id=id_product;
+    SELECT product_buyer, product_price INTO buyer, price FROM products 
+    WHERE product_id=id_product FOR UPDATE;
     
     IF buyer IS NOT NULL 
     THEN
 		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Le produit a déjà été vendu !'; 
     END IF;
     
-    SELECT amount INTO user_amount from users WHERE id=id_user; 
+    SELECT amount INTO user_amount from users WHERE id=id_user FOR UPDATE; 
     
     UPDATE products SET product_buyer=id_user WHERE product_id=id_product;
 	UPDATE users SET amount=amount-price WHERE id=id_user;
