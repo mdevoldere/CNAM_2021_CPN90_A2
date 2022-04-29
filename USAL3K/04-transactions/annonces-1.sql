@@ -9,7 +9,7 @@ CREATE TABLE users
 	id INT PRIMARY KEY,
     firstname VARCHAR(32) NOT NULL,
     amount INT NOT NULL
-);
+) Engine = InnoDb;
 
 CREATE TABLE products 
 (
@@ -20,7 +20,7 @@ CREATE TABLE products
     product_buyer INT NULL,
     FOREIGN KEY (product_seller) REFERENCES users(id),
     CONSTRAINT fk_buyer FOREIGN KEY (product_buyer) REFERENCES users(id)
-);
+) Engine = InnoDb;
 
 INSERT INTO users (id, firstname, amount) VALUES 
 (1, 'Paul', 1000),
