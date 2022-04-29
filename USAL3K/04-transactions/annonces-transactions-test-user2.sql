@@ -1,0 +1,9 @@
+/* UTILISATEUR ROOT */
+use annonces;
+SET AUTOCOMMIT=0;
+
+
+
+
+
+SET AUTOCOMMIT=1;
